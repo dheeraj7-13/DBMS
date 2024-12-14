@@ -1,0 +1,254 @@
+Implementation of ORDBMS
+Using,
+ADT
+OBJECT
+REFERENCE
+DEREFERENCE
+
+
+create type type_name13 As object
+   (
+   fname varchar(20),mname varchar(20),lname varchar(20)
+   );
+   /
+type created.
+
+SQL> create type type_address14 As object
+  2  (
+  3  street varchar(20); city varchar(20),pincode number(10)
+  4  );
+  5  /
+
+Warning: Type created with compilation errors.
+
+SQL> create table customer016
+  2  (
+  3  c_id number(5) primary key,
+  4  c_name type_name15,
+  5  c_add type_address15,
+  6  c_phno number(10)
+  7  );
+
+Table created.
+
+SQL> insert into customer016 values(1,type_name15('sid','n','abc'),type_address15('Raviraj Building','mumbai',400042),96
+65787);
+
+1 row created.
+
+SQL> insert into customer016 values(2,type_name15('sameer','m','def'),type_address15('Star Building','pune',421042),9665
+888);
+
+1 row created.
+
+SQL> insert into customer016 values(3,type_name15('ravi','o','xyz'),type_address15('galaxy Building','pcmc',421043),9665
+899);
+
+1 row created.
+
+SQL> insert into customer016 values(4,type_name15('savi','p','sss'),type_address15('Moon Building','thane',421044),96657
+77);
+
+1 row created.
+
+SQL> insert into customer016 values(5,type_name15('janavi','r','lll'),type_address15('Deepa Building','palghar',421045),
+96657789);
+
+1 row created.
+
+SQL> insert into customer016 values(6,type_name15('pooja','s','ppp'),type_address15('Sagar Building','kandivali',421046)
+,96667543);
+
+1 row created.
+SQL> select * from customer016;
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         1
+TYPE_NAME15('sid', 'n', 'abc')
+TYPE_ADDRESS15('Raviraj Building', 'mumbai', 400042)
+   9665787
+
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         2
+TYPE_NAME15('sameer', 'm', 'def')
+TYPE_ADDRESS15('Star Building', 'pune', 421042)
+   9665888
+
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         3
+TYPE_NAME15('ravi', 'o', 'xyz')
+TYPE_ADDRESS15('galaxy Building', 'pcmc', 421043)
+   9665899
+
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         4
+TYPE_NAME15('savi', 'p', 'sss')
+TYPE_ADDRESS15('Moon Building', 'thane', 421044)
+   9665777
+
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         5
+TYPE_NAME15('janavi', 'r', 'lll')
+TYPE_ADDRESS15('Deepa Building', 'palghar', 421045)
+  96657789
+
+
+      C_ID
+----------
+C_NAME(FNAME, MNAME, LNAME)
+--------------------------------------------------------------------------------
+C_ADD(STREET, CITY, PINCODE)
+--------------------------------------------------------------------------------
+    C_PHNO
+----------
+         6
+TYPE_NAME15('pooja', 's', 'ppp')
+TYPE_ADDRESS15('Sagar Building', 'kandivali', 421046)
+  96667543
+
+SQL> select c.c_add.street from customer016 c where c_id=1;
+
+C_ADD.STREET
+--------------------
+Raviraj Building
+
+SQL> select c.c_name.fname||' '||c.c_name.mname||' '||c.c_name.lname from customer016 c;
+
+C.C_NAME.FNAME||''||C.C_NAME.MNAME||''||C.C_NAME.LNAME
+--------------------------------------------------------------
+sid n abc
+sameer m def
+ravi o xyz
+savi p sss
+janavi r lll
+pooja s ppp
+
+6 rows selected.
+
+SQL> select c_id,c.c_name.lname from customer016 c;
+
+      C_ID C_NAME.LNAME
+---------- --------------------
+         1 abc
+         2 def
+         3 xyz
+         4 sss
+         5 lll
+         6 ppp
+
+6 rows selected.
+
+
+
+
+
+create or replace type Animal_TY12 as object (Breed varchar2(25),
+Name varchar2(25), BirthDate DATE);
+/
+
+create table ANIMAL12 of ANIMAL_TY12;
+
+insert into ANIMAL12 values(ANIMAL_TY12('MULE','FRANCES','01-APR-02));
+
+SQL> create or replace type Animal_TY12 as object (Breed varchar2(25),
+  2  Name varchar2(25), BirthDate DATE);
+  3  /
+
+Type created.
+
+SQL> create table ANIMAL12 of ANIMAL_TY12;
+
+Table created.
+
+SQL> insert into ANIMAL12 values(ANIMAL_TY12('MULE','FRANCES','01-APR-02));
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> insert into ANIMAL12 values(ANIMAL_TY12('MULE','FRANCES','01-APR-02'));
+
+1 row created.
+
+SQL> insert into ANIMAL12 values(ANIMAL_TY12('DOG','BENJI','02-APR-03'));
+
+1 row created.
+
+SQL> insert into ANIMAL12 values(ANIMAL_TY12('CAT','LISA','02-APR-04'));
+
+1 row created.
+
+SQL> select REF(A) from ANIMAL12 A;
+
+REF(A)
+--------------------------------------------------------------------------------
+00002802094D2423EACBD44D628C8F203C612B5A8F8FA26F9F28FA4AD39B39449451866F9F004184
+B10000
+
+000028020976BD044F08884BCB8132AF7E39027A038FA26F9F28FA4AD39B39449451866F9F004184
+B10001
+
+000028020904957B8893FF4FC69DFC9A0CAD7930F18FA26F9F28FA4AD39B39449451866F9F004184
+B10002
+
+
+SQL> create table KEEPER12 (KeeperName varchar2(25),AnimalKept REF ANIMAL_TY12);
+
+Table created.
+
+SQL> describe KEEPER12
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ KEEPERNAME                                         VARCHAR2(25)
+ ANIMALKEPT                                         REF OF ANIMAL_TY12
+
+SQL> insert into KEEPER12 select 'CATHERINE',REF(A) from ANIMAL12 A where Name='BENJI';
+
+1 row created.
+
+SQL> select * from KEEPER12;
+
+KEEPERNAME
+-------------------------
+ANIMALKEPT
+--------------------------------------------------------------------------------
+CATHERINE
+000022020876BD044F08884BCB8132AF7E39027A038FA26F9F28FA4AD39B39449451866F9F
