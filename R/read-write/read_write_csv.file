@@ -15,17 +15,19 @@ print(df2)
 combine2 = rbind(df1, df2)
 print(combine2)
 
+//read-write
 db=   read.csv('c:/users/bhair/downloads/data.csv')
-
 read.csv('c:/users/bhair/downloads/data.csv')
 x=c(a=12,b=13,c=15,d=20)
 db=rbind(db,x)
-
 y=c(a=122,b=123,c=135,d=240)
 db=rbind(db,y)
 setwd('c:/users/bhair/downloads/')
 write.csv(db,file='c:/users/bhair/downloads/data.csv')
 read.csv('c:/users/bhair/downloads/data.csv')
+
+
+
 print(db)
 depid=c(1,2,3,4)
 combine2 = cbind (combine2, depid)
