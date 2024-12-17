@@ -39,3 +39,11 @@ insert into employee VALUES (110,90,'rishab',22000,1000,'CLERK');
 select dep_no,job,count(*),sum(salary) from employee group by
 
 rollup (dep_no,job);
+SELECT COUNT(8)     FROM employee;
+
+  
+
+
+set pagesize 1000
+set linesize 1000
+
