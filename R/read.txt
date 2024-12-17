@@ -1,0 +1,31 @@
+df1 = data.frame ( 
+  Name=c("mike","phoenix"),
+  Age=c(30,25),    # Change "age" to "Age"
+  Score=c(80,85)
+)
+
+df2 = data.frame(
+  Name=c("Dean","Cassie"),
+  Age=c(28,35),
+  Score=c(90,75)
+)
+
+print(df1)
+print(df2) 
+combine2 = rbind(df1, df2)
+print(combine2)
+
+db=   read.csv('c:/users/bhair/downloads/data.csv')
+
+read.csv('c:/users/bhair/downloads/data.csv')
+x=c(a=12,b=13,c=15,d=20)
+db=rbind(db,x)
+
+y=c(a=122,b=123,c=135,d=240)
+db=rbind(db,y)
+setwd('c:/users/bhair/downloads/')
+write.csv(db,file='c:/users/bhair/downloads/data.csv')
+read.csv('c:/users/bhair/downloads/data.csv')
+print(db)
+depid=c(1,2,3,4)
+combine2 = cbind (combine2, depid)
