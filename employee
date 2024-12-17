@@ -1,0 +1,22 @@
+CREATE TABLE employee (
+    empno INTEGER, 
+    depno INTEGER, 
+    empname VARCHAR(50), 
+    salary INTEGER, 
+    comm INTEGER, 
+    job VARCHAR(50)
+);
+
+-- Inserting records
+INSERT INTO employee VALUES (101, 10, 'sanket', 10000, 1000, 'assistant');
+INSERT INTO employee VALUES (102, 12, 'sam', 15000, 2000, 'hr');
+INSERT INTO employee VALUES (103, 20, 'garima', 5000, 1200, 'manager');
+INSERT INTO employee VALUES (104, 13, 'gaurav', 15000, 1120, 'supervisor');
+INSERT INTO employee VALUES (105, 10, 'rohit', 20000, 200, 'hr');
+INSERT INTO employee VALUES (106, 11, 'ritesh', 20000, 200, 'manager');
+
+
+
+ SELECT depno, job, COUNT(*), SUM(salary)
+ FROM employee
+ GROUP BY depno, job;
